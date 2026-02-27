@@ -1,0 +1,251 @@
+:root {
+    --bg-color: #0f172a;
+    --text-color: #f8fafc;
+    --primary-color: #3b82f6;
+    --danger-color: #ef4444;
+    --card-bg: #1e293b;
+    --border-color: #334155;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.controls {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.topic-selection,
+.timer-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+input,
+select {
+    padding: 0.75rem;
+    border-radius: 6px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    font-size: 1rem;
+}
+
+.record-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: #2563eb;
+}
+
+.danger-btn {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.danger-btn:hover {
+    background-color: #dc2626;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #64748b;
+}
+
+.status-indicator.recording {
+    background-color: var(--danger-color);
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+}
+
+#timeDisplay {
+    font-family: monospace;
+    font-size: 1.5rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.results-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.transcript-box,
+.corrections-box,
+.corrected-box {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+h3 {
+    margin-top: 0;
+    color: #94a3b8;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.correction-item {
+    background-color: rgba(59, 130, 246, 0.1);
+    border-left: 4px solid var(--primary-color);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0 8px 8px 0;
+}
+
+.topic-feedback-box {
+    border-left: 4px solid var(--primary-color);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #f8fafc;
+}
+
+.mistake {
+    color: #fca5a5;
+    text-decoration: line-through;
+}
+
+.fix {
+    color: #86efac;
+    font-weight: 600;
+}
+
+.explanation {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #cbd5e1;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#loading {
+    text-align: center;
+    padding: 3rem;
+}
+
+/* Transcription Highlights */
+.transcription-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.subtitle {
+    margin-top: -0.5rem;
+    margin-bottom: 1.5rem;
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+.highlighted-mistake {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+    padding: 0 0.2rem;
+    border-radius: 4px;
+    text-decoration: underline wavy #ef4444;
+    text-decoration-thickness: 1px;
+    position: relative;
+    display: inline-block;
+    margin: 0 0.1rem;
+}
+
+.mistake-index {
+    color: #ef4444;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-left: 2px;
+}
+
+.mistake-index-label {
+    color: #ef4444;
+    font-weight: bold;
+    margin-right: 0.3rem;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Practice App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>English Practice App</h1>
+            <p>Speak, analyze, and improve your spoken English.</p>
+        </header>
+
+        <main>
+            <section class="controls">
+                <div class="topic-selection">
+                    <label for="topic">Topic:</label>
+                    <select id="topicSelect"
+                        onchange="const topicInput = document.getElementById('topic'); if(this.value === 'custom') { topicInput.style.display = 'block'; topicInput.value = ''; topicInput.focus(); } else { topicInput.style.display = 'none'; topicInput.value = this.value; }">
+                        <option value="Introduce yourself">Introduce yourself</option>
+                        <option value="Describe your favorite hobby">Describe your favorite hobby</option>
+                        <option value="Talk about a recent book you read">Talk about a recent book you read</option>
+                        <option value="Describe a memorable vacation">Describe a memorable vacation</option>
+                        <option value="What are you learning recently?">What are you learning recently?</option>
+                        <option value="custom">Write my own topic...</option>
+                    </select>
+                    <input type="text" id="topic" placeholder="e.g., Talk about future goals" style="display: none;"
+                        value="Introduce yourself" />
+                </div>
+
+                <div class="timer-selection">
+                    <label for="duration">Duration (mins):</label>
+                    <select id="duration">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="record-controls">
+                    <button id="recordBtn" class="btn primary-btn">🎤 Start Recording</button>
+                    <div id="statusIndicator" class="status-indicator"></div>
+                    <span id="timeDisplay">00:00</span>
+                </div>
+            </section>
+
+            <section id="loading" class="hidden">
+                <div class="spinner"></div>
+                <p>Analyzing speech...</p>
+            </section>
+
+            <section id="results" class="results-section hidden">
+                <div class="transcript-box" id="transcriptionBox">
+                    <h2>Your Transcription</h2>
+                    <p class="subtitle">Here is what our AI heard you say. Mistakes are underlined.</p>
+                    <p id="originalText" class="transcription-text"></p>
+                </div>
+
+                <div class="corrections-box">
+                    <h3>Feedback</h3>
+                    <div id="topicFeedback" class="topic-feedback-box hidden"></div>
+                    <div id="correctionsList"></div>
+                </div>
+
+                <div class="corrected-box">
+                    <h3>Corrected Version</h3>
+                    <p id="correctedText"></p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
